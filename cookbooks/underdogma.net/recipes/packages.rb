@@ -1,4 +1,4 @@
-apt_repository 'security-ubuntu-multiverse' do
+apt_repository 'googleapis' do
   uri          'https://storage.googleapis.com/download.dartlang.org/linux/debian'
   distribution 'stable'
   components   ['main']
@@ -8,7 +8,6 @@ end
 packages = [
   'apt-file',
   'dart',
-  'docker.io',
   'finger',
   'gcc',
   'git',
