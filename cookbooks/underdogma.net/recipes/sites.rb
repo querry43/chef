@@ -9,16 +9,16 @@ git '/var/www/underdogmadotnet' do
   repository 'https://github.com/querry43/underdogmadotnet.git'
 end
 
-supervisord_program 'nginx_proxy' do
+supervisord_program 'proxy' do
   autostart true
   autorestart true
-  command 'docker run --name nginx-proxy -a stdout -a stderr --rm=true -p 80:80 -v /home/matt/chef/cookbooks/underdogma.net/files/nginx/proxy.conf:/etc/nginx/conf.d/default.conf:ro --link nginx-www-underdogma-net:nginx-www-underdogma-net --link slicerserver:slicerserver nginx'
+  command 'docker run --name proxy -a stdout -a stderr --rm=true -p 80:80 -v /home/matt/chef/cookbooks/underdogma.net/files/nginx/proxy.conf:/etc/nginx/conf.d/default.conf:ro nginx'
 end
 
-supervisord_program 'nginx_www_underdogma_net' do
+supervisord_program 'www-underdogma-net' do
   autostart true
   autorestart true
-  command 'docker run --name nginx-www-underdogma-net -a stdout -a stderr --rm=true -v /var/www/underdogmadotnet/build/web:/usr/share/nginx/html:ro nginx'
+  command 'docker run --name www-underdogma-net -a stdout -a stderr --rm=true -v /var/www/underdogmadotnet/build/web:/usr/share/nginx/html:ro nginx'
   notifies :run, 'execute[make underdogmadotnet]'
 end
 

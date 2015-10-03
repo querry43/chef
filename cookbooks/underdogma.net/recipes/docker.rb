@@ -24,12 +24,3 @@ apt_repository 'docker' do
 end
 
 package 'docker-engine'
-
-file '/etc/default/docker' do
-  content 'DOCKER_OPTS="--icc=false --iptables=true"'
-  notifies :restart, 'service[docker]'
-end
-
-service 'docker' do
-  action :nothing
-end
