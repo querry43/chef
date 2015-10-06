@@ -1,35 +1,17 @@
-directory '/var/www' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
-
-git '/var/www/underdogmadotnet' do
-  repository 'https://github.com/querry43/underdogmadotnet.git'
-end
-
-supervisord_program 'proxy' do
+supervisord_program 'dynamic-proxy' do
   autostart true
   autorestart true
-  command 'docker run --name proxy -a stdout -a stderr --rm=true -p 80:80 -v /home/matt/chef/cookbooks/underdogma.net/files/nginx/proxy.conf:/etc/nginx/conf.d/default.conf:ro nginx'
+  command 'docker run --name dynamic-proxy -a stdout -a stderr --rm=true -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock:ro qrry/dynamic-proxy'
 end
 
-supervisord_program 'www-underdogma-net' do
+supervisord_program 'underdogmadotnet' do
   autostart true
   autorestart true
-  command 'docker run --name www-underdogma-net -a stdout -a stderr --rm=true -v /var/www/underdogmadotnet/build/web:/usr/share/nginx/html:ro nginx'
-  notifies :run, 'execute[make underdogmadotnet]'
-end
-
-execute 'make underdogmadotnet' do
-  command '/usr/bin/make'
-  cwd '/var/www/underdogmadotnet'
-  action :nothing
+  command 'docker run --name underdogmadotnet -a stdout -a stderr --rm=true -e VIRTUAL_HOST=www.underdogma.net qrry/underdogmadotnet'
 end
 
 supervisord_program 'slicerserver' do
   autostart true
   autorestart true
-  command 'docker run --name slicerserver -a stdout -a stderr --rm=true slicerserver'
+  command 'docker run --name slicerserver -a stdout -a stderr --rm=true -e VIRTUAL_HOST=slicer.underdogma.net -e PROXY_PORT=5000 qrry/slicerserver'
 end
