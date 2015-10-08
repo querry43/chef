@@ -1,7 +1,7 @@
 supervisord_program 'dynamic-proxy' do
   autostart true
   autorestart true
-  command 'docker run --name dynamic-proxy -a stdout -a stderr --rm=true -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock:ro qrry/dynamic-proxy'
+  command 'docker run --name dynamic-proxy -a stdout -a stderr --rm=true -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock:ro qrry/underdogma-dynamic-proxy'
 end
 
 supervisord_program 'underdogmadotnet' do
