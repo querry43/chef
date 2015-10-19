@@ -21,6 +21,10 @@ packages = [
 
 package packages
 
+gem_package 'config_curator' do
+  gem_binary '/usr/bin/gem2.0'
+end
+
 gem_package 'ruby-shadow' do
   gem_binary '/usr/bin/gem2.0'
 end
