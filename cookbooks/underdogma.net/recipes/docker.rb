@@ -29,3 +29,9 @@ execute 'install docker-compose' do
   command 'curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose'
   creates '/usr/local/bin/docker-compose'
 end
+
+cookbook_file '/usr/local/bin/docker-proxy.sh' do
+  action :create
+  source 'docker-proxy.sh'
+  mode   '0755'
+end
