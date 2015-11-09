@@ -13,5 +13,5 @@ end
 supervisord_program 'slicerserver' do
   autostart true
   autorestart true
-  command 'docker-proxy.sh slicerserver qrry/slicerserver -a stdout -a stderr --rm=true -e VIRTUAL_HOST=slicer.underdogma.net -e PROXY_PORT=5000'
+  command 'docker-proxy.sh slicerserver qrry/slicerserver -a stdout -a stderr --rm=true -e VIRTUAL_HOST=slicer.underdogma.net -e PROXY_PORT=5000 -v /home/matt/3d-printer/configuration:/home/matt/work/3d-printer/configuration:ro'
 end
