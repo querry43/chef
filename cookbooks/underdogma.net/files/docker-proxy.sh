@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo $$
-
-set -x
-
 name=$1; shift
 image=$1; shift
 args=$@
