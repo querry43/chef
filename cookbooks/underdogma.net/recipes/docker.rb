@@ -1,7 +1,7 @@
 package 'btrfs-tools'
 
 execute 'docker fs file' do
-  command '/bin/dd if=/dev/zero of=/var/lib/docker.fs bs=1M count=4000'
+  command '/bin/dd if=/dev/zero of=/var/lib/docker.fs bs=1M count=6000'
   creates '/var/lib/docker.fs'
   notifies :run, 'execute[docker fs]', :immediately
 end
@@ -24,6 +24,11 @@ apt_repository 'docker' do
 end
 
 package 'docker-engine'
+
+service 'docker' do
+  action [:enable, :start]
+  supports :status => true, :restart => true
+end
 
 execute 'install docker-compose' do
   command 'curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose'
