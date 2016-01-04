@@ -14,6 +14,7 @@ end
 mount '/var/lib/docker' do
   device '/var/lib/docker.fs'
   fstype 'btrfs'
+  action [:mount, :enable]
 end
 
 apt_repository 'docker' do
