@@ -32,7 +32,7 @@ service 'docker' do
 end
 
 execute 'install docker-compose' do
-  command 'curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose'
+  command 'curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose'
   creates '/usr/local/bin/docker-compose'
 end
 
