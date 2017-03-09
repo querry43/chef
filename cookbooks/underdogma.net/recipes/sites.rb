@@ -15,3 +15,12 @@ supervisord_program 'slicerserver' do
   autorestart true
   command 'docker-proxy.sh slicerserver qrry/slicerserver -a stdout -a stderr --rm=true -e VIRTUAL_HOST=slicer.underdogma.net -e PROXY_PORT=5000 -v /home/matt/3d-printer/configuration:/home/matt/work/3d-printer/configuration:ro'
 end
+
+# pick up cert changes
+cron 'bounce dynamic-proxy' do
+  day     '1'
+  hour    '1'
+  minute  '0'
+  command '/usr/bin/supervisorctl restart dynamic-proxy'
+  mailto  'matt@underdogma.net'
+end
