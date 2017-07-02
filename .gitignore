@@ -1,3 +1,6 @@
 chef-client-running.pid
 chef-stacktrace.out
+/remote_file
+/local-mode-cache
+/https___dl-ssl_google_com_linux_linux_signing_key_pub
 .*

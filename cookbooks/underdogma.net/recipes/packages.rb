@@ -1,6 +1,9 @@
+package 'apt-transport-https'
+
 apt_repository 'googleapis' do
   uri          'https://storage.googleapis.com/download.dartlang.org/linux/debian'
   distribution 'stable'
+  key          'https://dl-ssl.google.com/linux/linux_signing_key.pub'
   components   ['main']
   trusted      true
 end
@@ -11,20 +14,15 @@ packages = [
   'finger',
   'gcc',
   'git',
+  'letsencrypt',
   'lxc',
   'ntp',
   'supervisor',
   'vim-nox',
   'vim-scripts',
-  'vim-syntax-go',
 ]
 
 package packages
 
-gem_package 'config_curator' do
-  gem_binary '/usr/bin/gem2.0'
-end
-
-gem_package 'ruby-shadow' do
-  gem_binary '/usr/bin/gem2.0'
-end
+gem_package 'config_curator'
+gem_package 'ruby-shadow'
