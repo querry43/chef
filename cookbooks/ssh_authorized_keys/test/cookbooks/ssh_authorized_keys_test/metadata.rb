@@ -1,8 +1,7 @@
 # encoding: UTF-8
 #
-# Cookbook Name:: ssh_authorized_keys
+# Cookbook Name:: ssh_authorized_keys_test
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # Copyright:: Copyright (c) 2015 Onddo Labs, SL.
 # License:: Apache License, Version 2.0
 #
@@ -19,30 +18,15 @@
 # limitations under the License.
 #
 
-name 'ssh_authorized_keys'
+name 'ssh_authorized_keys_test'
 maintainer 'Xabier de Zuazo'
 maintainer_email 'xabier@zuazo.org'
-license 'Apache-2.0'
-description 'Creates SSH authorized keys files in user home directories.'
+license 'Apache 2.0'
+description <<-EOS
+This cookbook is used with test-kitchen to test the parent, ssh_authorized_keys
+cookbook.
+EOS
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.4.0'
+version '0.1.0' # WiP
 
-if respond_to?(:source_url)
-  source_url "https://github.com/zuazo/#{name}-cookbook"
-end
-if respond_to?(:issues_url)
-  issues_url "https://github.com/zuazo/#{name}-cookbook/issues"
-end
-
-chef_version '>= 12' if respond_to?(:chef_version)
-
-supports 'aix'
-supports 'amazon'
-supports 'debian'
-supports 'centos'
-supports 'fedora'
-supports 'freebsd'
-supports 'opensuse'
-supports 'redhat'
-supports 'suse'
-supports 'ubuntu'
+depends 'ssh_authorized_keys'

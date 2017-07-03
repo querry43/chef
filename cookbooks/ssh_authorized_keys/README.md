@@ -1,11 +1,14 @@
 SSH Authorized Keys Cookbook
 ============================
+[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg?style=flat)](http://www.rubydoc.info/github/zuazo/ssh_authorized_keys-cookbook)
+[![GitHub](http://img.shields.io/badge/github-zuazo/ssh__authorized__keys--cookbook-blue.svg?style=flat)](https://github.com/zuazo/ssh_authorized_keys-cookbook)
+[![License](https://img.shields.io/github/license/zuazo/ssh_authorized_keys-cookbook.svg?style=flat)](#license-and-author)
+
 [![Cookbook Version](https://img.shields.io/cookbook/v/ssh_authorized_keys.svg?style=flat)](https://supermarket.chef.io/cookbooks/ssh_authorized_keys)
-[![GitHub Source](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/zuazo/ssh_authorized_keys-cookbook)
 [![Dependency Status](http://img.shields.io/gemnasium/zuazo/ssh_authorized_keys-cookbook.svg?style=flat)](https://gemnasium.com/zuazo/ssh_authorized_keys-cookbook)
 [![Code Climate](https://img.shields.io/codeclimate/github/zuazo/ssh_authorized_keys-cookbook.svg?style=flat)](https://codeclimate.com/github/zuazo/ssh_authorized_keys-cookbook)
-[![Build Status](https://img.shields.io/travis/zuazo/ssh_authorized_keys-cookbook/0.3.0.svg?style=flat)](https://travis-ci.org/zuazo/ssh_authorized_keys-cookbook)
-[![Coverage Status](https://img.shields.io/coveralls/zuazo/ssh_authorized_keys-cookbook/0.3.0.svg?style=flat)](https://coveralls.io/r/zuazo/ssh_authorized_keys-cookbook?branch=0.3.0)
+[![Build Status](https://img.shields.io/travis/zuazo/ssh_authorized_keys-cookbook/0.4.0.svg?style=flat)](https://travis-ci.org/zuazo/ssh_authorized_keys-cookbook)
+[![Coverage Status](https://img.shields.io/coveralls/zuazo/ssh_authorized_keys-cookbook/0.4.0.svg?style=flat)](https://coveralls.io/r/zuazo/ssh_authorized_keys-cookbook?branch=0.4.0)
 [![Inline docs](https://inch-ci.org/github/zuazo/ssh_authorized_keys-cookbook.svg?branch=master&style=flat)](https://inch-ci.org/github/zuazo/ssh_authorized_keys-cookbook)
 
 [Chef](https://www.chef.io/) cookbook to create SSH authorized keys files in user home directories.
@@ -19,6 +22,7 @@ Requirements
 
 This cookbook has been tested on the following platforms:
 
+* AIX
 * Amazon Linux
 * Debian
 * CentOS
@@ -31,6 +35,11 @@ This cookbook has been tested on the following platforms:
 
 Please, [let us know](https://github.com/zuazo/ssh_authorized_keys-cookbook/issues/new?title=I%20have%20used%20it%20successfully%20on%20...) if you use it successfully on any other platform.
 
+## Required Applications
+
+* Chef `12` or higher.
+* Ruby `2.3` or higher.
+
 Definitions
 ===========
 
@@ -42,15 +51,16 @@ Authorize a key for public key authentication using SSH.
 
 ## ssh_authorize_key Parameters
 
-| Parameter | Default           | Description                              |
-|:----------|:------------------|:-----------------------------------------|
-| user      | `nil`             | System user **(required)**.              |
-| group     | user              | System group.                            |
-| home      | *calculated*      | System user home path.                   |
-| key       | `nil`             | SSH public key in base64 **(required)**. |
-| keytype   | `'ssh-rsa'`       | SSH key type.                            |
-| comment   | *definition name* | SSH key comment.                         |
-| options   | `nil`             | SSH key options as a hash.               |
+| Parameter    | Default           | Description                              |
+|:-------------|:------------------|:-----------------------------------------|
+| user         | `nil`             | System user **(required)**.              |
+| group        | user              | System group.                            |
+| home         | *calculated*      | System user home path.                   |
+| key          | `nil`             | SSH public key in base64 **(required)**. |
+| keytype      | `'ssh-rsa'`       | SSH key type.                            |
+| comment      | *definition name* | SSH key comment.                         |
+| options      | `nil`             | SSH key options as a hash.               |
+| validate_key | `true`            | Enable/Disable assert_key                |
 
 Usage Examples
 ==============
@@ -188,7 +198,9 @@ License and Author
 | **Author:**          | [Raul Rodriguez](https://github.com/raulr) (<raul@onddo.com>)
 | **Author:**          | [Xabier de Zuazo](https://github.com/zuazo) (<xabier@zuazo.org>)
 | **Contributor:**     | [Ong Ming Yang](https://github.com/ongmingyang)
-| **Copyright:**       | Copyright (c) 2015, Xabier de Zuazo
+| **Contributor:**     | [MVNW](https://github.com/MVNW)
+| **Contributor:**     | [Anthony Caiafa](https://github.com/acaiafa)
+| **Copyright:**       | Copyright (c) 2015-2016, Xabier de Zuazo
 | **Copyright:**       | Copyright (c) 2015, Onddo Labs, SL.
 | **License:**         | Apache License, Version 2.0
 
