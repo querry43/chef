@@ -35,6 +35,11 @@ execute 'dot_files' do
   cwd '/home/matt/dotfiles'
 end
 
+directory '/home/matt/public_html' do
+  owner 'matt'
+  group 'matt'
+end
+
 # this should always be last
 user 'root' do
   action :lock

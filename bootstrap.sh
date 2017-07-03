@@ -2,6 +2,8 @@
 
 set -e
 
+cd /tmp
+
 if ! which chef-solo > /dev/null; then
     export DEBIAN_FRONTEND=noninteractive
     # Install Ruby and Chef
