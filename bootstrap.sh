@@ -15,4 +15,5 @@ fi
 git clone https://github.com/querry43/chef.git
 
 cd chef
+sudo ./fetch-certs.sh
 ./run.sh
