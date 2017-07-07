@@ -17,6 +17,7 @@ packages = [
   'letsencrypt',
   'lxc',
   'ntp',
+  'openssh-server',
   'supervisor',
   'vim-nox',
   'vim-scripts',
