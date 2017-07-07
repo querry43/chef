@@ -1,3 +1,4 @@
+include_recipe "underdogma.net::ipv6"
 include_recipe "underdogma.net::packages"
 include_recipe "underdogma.net::docker"
 include_recipe "underdogma.net::users"
