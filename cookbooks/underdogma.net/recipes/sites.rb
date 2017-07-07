@@ -4,6 +4,10 @@ supervisord_program 'underdogmadotnet' do
   command 'docker-proxy.sh underdogmadotnet qrry/underdogmadotnet -e VIRTUAL_HOST=www.underdogma.net'
 end
 
+directory '/var/www/3d-printer' do
+  recursive true
+end
+
 git '/var/www/3d-printer' do
   repository 'https://github.com/querry43/3d-printer.git'
 end
