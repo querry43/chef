@@ -4,3 +4,4 @@ chef-stacktrace.out
 /local-mode-cache
 /https___dl-ssl_google_com_linux_linux_signing_key_pub
 .*
+letsencrypt.log

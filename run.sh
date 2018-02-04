@@ -1,3 +1,5 @@
 #!/bin/bash
 
-sudo chef-solo -c solo.rb
+top=$(readlink -f $(dirname $0))
+
+sudo chef-solo -c "$top/solo.rb"
