@@ -1,16 +1,7 @@
 package 'apt-transport-https'
 
-apt_repository 'googleapis' do
-  uri          'https://storage.googleapis.com/download.dartlang.org/linux/debian'
-  distribution 'stable'
-  key          'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-  components   ['main']
-  trusted      true
-end
-
 packages = [
   'apt-file',
-  'dart',
   'finger',
   'gcc',
   'git',

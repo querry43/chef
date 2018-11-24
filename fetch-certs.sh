@@ -1,6 +1,11 @@
 #!/bin/bash
 
-set -e
+set -ueo pipefail
+
+if ! which letsencrypt > /dev/null; then
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install -y letsencrypt 
+fi
 
 letsencrypt -v certonly --standalone \
     -d underdogma.net \
