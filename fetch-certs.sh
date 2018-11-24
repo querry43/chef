@@ -2,12 +2,12 @@
 
 set -ueo pipefail
 
-if ! which letsencrypt > /dev/null; then
-    export DEBIAN_FRONTEND=noninteractive
-    apt-get install -y letsencrypt 
-fi
-
-letsencrypt -v certonly --standalone \
+letsencrypt certonly \
+    --test-cert \
+    --agree-tos \
+    -n \
+    -m querry43@gmail.com \
+    --standalone \
     -d underdogma.net \
     -d test.underdogma.net \
     -d www.underdogma.net \

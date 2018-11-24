@@ -9,6 +9,7 @@ packages = [
   'lxc',
   'ntp',
   'openssh-server',
+  'silversearcher-ag',
   'supervisor',
   'vim-nox',
   'vim-scripts',
