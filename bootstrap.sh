@@ -7,8 +7,9 @@ cd /tmp
 if ! which chef-solo > /dev/null; then
     export DEBIAN_FRONTEND=noninteractive
     # Install Ruby and Chef
-    sudo apt-get update
-    sudo apt-get install -y ruby ruby-dev make libyajl-dev gcc git
+    sudo apt update
+    sudo apt --fix-broken install -y
+    sudo apt install -y ruby ruby-dev make libyajl-dev gcc git
     sudo gem install --no-rdoc --no-ri chef
 fi
 
