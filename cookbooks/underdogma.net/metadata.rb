@@ -5,5 +5,6 @@ version '0.0.1'
 supports 'ubuntu'
 
 depends 'apt'
+depends 'archive'
 depends 'ssh_authorized_keys'
 depends 'supervisord'
